@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import { Switch } from 'react-router-dom';
 import { Route } from 'react-router-dom';
-import List from './ Views/List';
+import ListPage from './ Views/ListPage';
 import Home from './ Views/Home';
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
             <Home />
           </Route>
           <Route exact path="/list">
-            <List />
+            <ListPage />
           </Route>
         </Switch>
       </BrowserRouter>
