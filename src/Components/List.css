@@ -1,3 +1,12 @@
 ul {
   list-style: none;
 }
+li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+.complete {
+  margin: 10px;
+}

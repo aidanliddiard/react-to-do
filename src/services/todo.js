@@ -6,7 +6,11 @@ export async function fetchToDos() {
 }
 
 export async function addToDo(todo) {
-  console.log(todo);
   const resp = await client.from('todos').insert({ todo: todo, complete: false });
+  return checkError(resp);
+}
+
+export async function deleteTodo(id) {
+  const resp = await client.from('todos').delete('*').match({ id });
   return checkError(resp);
 }
