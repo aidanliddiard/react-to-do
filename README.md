@@ -1,25 +1,10 @@
-# Alchemy React Base Template
+# TO Do App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-Use this template for all your "from scratch" deliverables. To start, simply run
-
-- `npm install`
-- `npm start`
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. connect to supabase (services/todo.js)
+2. create to do list (Views/List.js)
+3. add new list item (Views/Add.js)
+4. supabase call (services/todo.js)
+5. set up Nav bar (compoents/Header.js)
+6. complete item check (Views/List.js)
+7. auth page (Views/Auth.js)
+8. delete tasks (Views/List.js)

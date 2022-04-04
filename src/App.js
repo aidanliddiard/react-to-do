@@ -1,23 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import ListPage from './ Views/ListPage';
+import Home from './ Views/Home';
+import AddPage from './ Views/AddPage';
+import Header from './Components/Header/Header';
+import { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 
 function App() {
+  const [currentUser, setCurrentUser] = useState('');
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Header currentUser={currentUser} setCurrentUser={setCurrentUser} />
+        <Switch>
+          <Route exact path="/">
+            <Home setCurrentUser={setCurrentUser} />
+          </Route>
+          <Route exact path="/list" currentUser={currentUser}>
+            {currentUser ? <ListPage /> : <Redirect to="/" />}
+          </Route>
+          <Route exact path="/add-new">
+            {currentUser ? <AddPage /> : <Redirect to="/" />}
+          </Route>
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }
