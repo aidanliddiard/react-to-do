@@ -8,6 +8,8 @@ import AddPage from './ Views/AddPage';
 import Header from './Components/Header/Header';
 
 function App() {
+  //const [currentUser, setCurrentUser] = useState('');
+
   return (
     <div className="App">
       <BrowserRouter>
