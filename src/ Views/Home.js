@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import SignUpForm from '../Components/SignUpForm';
 import { signInUser, signUpUser } from '../services/users';
 
-export default function Home() {
+export default function Home({ setCurrentUser }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -12,8 +12,8 @@ export default function Home() {
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      await signUpUser(email, password);
-      //setCurrentUser = resp.email;
+      const resp = await signUpUser(email, password);
+      setCurrentUser(resp.email);
       history.push('/list');
     } catch (e) {
       setError(e.message);
@@ -22,8 +22,8 @@ export default function Home() {
   const handleSignIn = async (e) => {
     e.preventDefault();
     try {
-      await signInUser(email, password);
-      //setCurrentUser = resp.email;
+      const resp = await signInUser(email, password);
+      setCurrentUser(resp.email);
       history.push('/list');
     } catch (e) {
       setError(e.message);
@@ -32,7 +32,7 @@ export default function Home() {
 
   return (
     <div>
-      <h3>Sign Up:</h3>
+      <h3>Sign In/Sign Up:</h3>
       {error && <p>{error}</p>}
       <SignUpForm
         email={email}

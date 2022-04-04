@@ -3,10 +3,10 @@ import { NavLink } from 'react-router-dom';
 import './Header.css';
 import { logOutUser } from '../../services/users';
 
-export default function Header() {
+export default function Header({ setCurrentUser, currentUser }) {
   const handleLogOut = async () => {
     await logOutUser();
-    //setCurrentUser(null);
+    setCurrentUser(null);
   };
   return (
     <div className="header">
@@ -23,15 +23,21 @@ export default function Header() {
         </li>
       </ul>
       <ul>
-        <li>
-          <NavLink exact to="/">
-            Sign In
-          </NavLink>
-        </li>
-
-        <li>
-          <button onClick={handleLogOut}>Sign out</button>
-        </li>
+        {!currentUser && (
+          <li>
+            <NavLink exact to="/">
+              Sign In
+            </NavLink>
+          </li>
+        )}
+        {currentUser && (
+          <>
+            <li>{currentUser}</li>
+            <li>
+              <button onClick={handleLogOut}>Sign out</button>
+            </li>
+          </>
+        )}
       </ul>
     </div>
   );
